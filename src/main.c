@@ -13,18 +13,22 @@ static void ordinal_suffix(int number, char *buf) {
   int last_digit;
   
   last_digit = number % 10;
-  switch(last_digit) {
-    case 1:
-      strcpy(buf, "st");
-      break;
-    case 2:
-      strcpy(buf, "nd");
-      break;
-    case 3:
-      strcpy(buf, "rd");
-      break;
-    default:
-      strcpy(buf, "th");
+  if (number > 10 && number < 20) {
+    strcpy(buf, "th");
+  } else {
+    switch(last_digit) {
+      case 1:
+        strcpy(buf, "st");
+        break;
+      case 2:
+        strcpy(buf, "nd");
+        break;
+      case 3:
+        strcpy(buf, "rd");
+        break;
+      default:
+        strcpy(buf, "th");
+    }
   }
 }
 
